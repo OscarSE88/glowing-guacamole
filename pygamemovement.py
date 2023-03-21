@@ -1,7 +1,7 @@
-
 import pygame
 from sys import exit 
 from pygame.locals import *
+import time
 
 pygame.init()
 screen = pygame.display.set_mode((800,400))
@@ -27,18 +27,19 @@ while True:
         if event.type == KEYDOWN:
             pygame.key.set_repeat(K_d, K_a)
             pygame.key.set_repeat(K_s, K_w)             
-            if event.key in [K_w]:
-                char_y_pos -=20
-                
+        
             if event.key in [K_a]:
                 char_x_pos -=20
-                
-            if event.key in [K_s]:
-                char_y_pos +=20
                 
             if event.key in [K_d]:
                 char_x_pos +=20
            
+            if event.key in [K_s]:
+                char_y_pos +=20
+                
+            if event.key in [K_w]:
+                char_y_pos -=20
+
             keys = pygame.key.get_pressed()
             if keys[pygame.K_w] and keys[pygame.K_d]:
                 char_y_pos -=10
@@ -52,7 +53,21 @@ while True:
             if keys[pygame.K_s] and keys[pygame.K_a]:
                 char_y_pos +=10
                 char_x_pos -=10
+
+            if event.key in [K_SPACE]:
+                print(char_x_pos, char_y_pos)
         
+            if char_x_pos > 800 or char_y_pos > 400:
+                char_y_pos = 250
+                char_x_pos = 600
+            if char_x_pos < 0 or char_y_pos < 0:
+                char_y_pos = 250
+                char_x_pos = 600
+            
+            
+                
+            
+
     screen.blit(sky_surface,(0,0))
     screen.blit(ground_surface,(0,300))
     screen.blit(char_surface,(char_x_pos,char_y_pos))
