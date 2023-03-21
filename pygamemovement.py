@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 20 17:47:39 2023
-
-@author: oscelg07
-"""
 
 import pygame
 from sys import exit 
